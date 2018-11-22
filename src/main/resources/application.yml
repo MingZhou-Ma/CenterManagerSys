@@ -1,0 +1,25 @@
+server:
+  port: 8888
+
+spring:
+  datasource:
+    #driver-class-name: com.mysql.jdbc.Driver
+    #url: jdbc:mysql://localhost:3306/center_manager_sys?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    url: jdbc:mysql://120.78.153.10:3306/center_manager_sys?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    #password: 123456
+    password: Wanguo8102
+    type: com.alibaba.druid.pool.DruidDataSource
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: true
+    show-sql: true
+  redis:
+    database: 0
+    host: 120.78.153.10
+    port: 6379
+    password: badguy
+    #lettuce:
+      #shutdown-timeout: 100ms
+    timeout: 5000ms
