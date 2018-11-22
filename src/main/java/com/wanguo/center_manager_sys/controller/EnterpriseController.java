@@ -56,7 +56,6 @@ public class EnterpriseController {
     @ApiImplicitParam(name = "jsonObject", value = "jsonObject对象", required = true, dataType = "JSONObject")
     @RequestMapping(value = "/api/enterprise/list", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public ResJson findEnterpriseList(@RequestBody JSONObject jsonObject) {
-
         //return enterpriseService.findEnterpriseList(token, page, size);
         return null;
     }
