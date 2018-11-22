@@ -33,13 +33,6 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     @Override
     public ResJson addEnterprise(String token, Enterprise enterprise) {
         String tokenString = tokenService.getToken(token);
-//        Set<String> keys = stringRedisTemplate.keys(AccessToken.ADMIN_REDIS_SESSION + "*");
-//        for (String key : keys) {
-//            String tokenString = stringRedisTemplate.opsForValue().get(key);
-//            if (!StringUtils.isEmpty(tokenString)) {
-//
-//            }
-//        }
         if (StringUtils.isEmpty(tokenString)) {
             return ResJson.errorAccessToken();
         }
