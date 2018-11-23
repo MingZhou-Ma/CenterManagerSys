@@ -43,7 +43,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         if (StringUtils.isEmpty(tokenString)) {
             return ResJson.errorAccessToken();
         }
-        if (null == enterpriseJpa.findByAppId(enterprise.getAppId())) {
+        if (null != enterpriseJpa.findByAppId(enterprise.getAppId())) {
             return ResJson.failJson(4000, "企业已存在", null);
         }
 
@@ -54,15 +54,15 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     }
 
     @Override
-    public ResJson delEnterprise(JSONObject jsonObject) {
-        String token;
-        Integer id;
-        try {
-            token = (String) ParamUtil.getFromJson(jsonObject, "token", String.class);
-            id = (Integer) ParamUtil.getFromJson(jsonObject, "id", Integer.class);
-        } catch (JsonParseException e) {
-            return ResJson.errorRequestParam(e.getMessage());
-        }
+    public ResJson delEnterprise(String token, Integer id) {
+//        String token;
+//        Integer id;
+//        try {
+//            token = (String) ParamUtil.getFromJson(jsonObject, "token", String.class);
+//            id = (Integer) ParamUtil.getFromJson(jsonObject, "id", Integer.class);
+//        } catch (JsonParseException e) {
+//            return ResJson.errorRequestParam(e.getMessage());
+//        }
         String tokenString = tokenService.getToken(token);
         if (StringUtils.isEmpty(tokenString)) {
             return ResJson.errorAccessToken();
@@ -77,17 +77,17 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     }
 
     @Override
-    public ResJson findEnterpriseList(JSONObject jsonObject) {
-        String token;
-        Integer page;
-        Integer size;
-        try {
-            token = (String) ParamUtil.getFromJson(jsonObject, "token", String.class);
-            page = (Integer) ParamUtil.getFromJsonWithDefault(jsonObject, "page", 0, Integer.class);
-            size = (Integer) ParamUtil.getFromJsonWithDefault(jsonObject, "size", 10, Integer.class);
-        } catch (JsonParseException e) {
-            return ResJson.errorRequestParam(e.getMessage());
-        }
+    public ResJson findEnterpriseList(String token, Integer page, Integer size) {
+//        String token;
+//        Integer page;
+//        Integer size;
+//        try {
+//            token = (String) ParamUtil.getFromJson(jsonObject, "token", String.class);
+//            page = (Integer) ParamUtil.getFromJsonWithDefault(jsonObject, "page", 0, Integer.class);
+//            size = (Integer) ParamUtil.getFromJsonWithDefault(jsonObject, "size", 10, Integer.class);
+//        } catch (JsonParseException e) {
+//            return ResJson.errorRequestParam(e.getMessage());
+//        }
         String tokenString = tokenService.getToken(token);
         if (StringUtils.isEmpty(tokenString)) {
             return ResJson.errorAccessToken();
@@ -98,19 +98,19 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     }
 
     @Override
-    public ResJson findBillFlowListByEnterprise(JSONObject jsonObject) {
-        String token;
-        Integer page;
-        Integer size;
-        Integer id;
-        try {
-            token = (String) ParamUtil.getFromJson(jsonObject, "token", String.class);
-            page = (Integer) ParamUtil.getFromJsonWithDefault(jsonObject, "page", 0, Integer.class);
-            size = (Integer) ParamUtil.getFromJsonWithDefault(jsonObject, "size", 10, Integer.class);
-            id = (Integer) ParamUtil.getFromJson(jsonObject, "id", Integer.class);
-        } catch (JsonParseException e) {
-            return ResJson.errorRequestParam(e.getMessage());
-        }
+    public ResJson findBillFlowListByEnterprise(String token, Integer page, Integer size, Integer id) {
+//        String token;
+//        Integer page;
+//        Integer size;
+//        Integer id;
+//        try {
+//            token = (String) ParamUtil.getFromJson(jsonObject, "token", String.class);
+//            page = (Integer) ParamUtil.getFromJsonWithDefault(jsonObject, "page", 0, Integer.class);
+//            size = (Integer) ParamUtil.getFromJsonWithDefault(jsonObject, "size", 10, Integer.class);
+//            id = (Integer) ParamUtil.getFromJson(jsonObject, "id", Integer.class);
+//        } catch (JsonParseException e) {
+//            return ResJson.errorRequestParam(e.getMessage());
+//        }
         String tokenString = tokenService.getToken(token);
         if (StringUtils.isEmpty(tokenString)) {
             return ResJson.errorAccessToken();

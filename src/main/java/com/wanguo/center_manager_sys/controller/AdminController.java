@@ -7,12 +7,10 @@ import com.wanguo.center_manager_sys.utils.ValidationUtil;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -34,14 +32,14 @@ public class AdminController {
         this.messageSource = messageSource;
     }
 
-    @ApiOperation(value = "登录", notes = "管理员登录")
-    @ApiImplicitParam(name = "admin", value = "管理员实体admin", required = true, dataType = "Admin")
+    /*@ApiOperation(value = "登录", notes = "管理员登录")
+    @ApiImplicitParam(name = "admin", value = "管理员实体admin", required = true, dataType = "Admin")*/
     @RequestMapping(value = "/api/admin/login", method = RequestMethod.POST)
-    public ResJson login(@RequestBody @Valid Admin admin, BindingResult bindingResult) {
-        ResJson resJson = ValidationUtil.validation(bindingResult, messageSource);
-        if (!resJson.getCode().equals(1000)) {
-            return resJson;
-        }
-        return adminService.login(admin);
+    public ResJson login(@RequestParam String username, @RequestParam  String password) {
+//        ResJson resJson = ValidationUtil.validation(bindingResult, messageSource);
+//        if (!resJson.getCode().equals(1000)) {
+//            return resJson;
+//        }
+        return adminService.login(username, password);
     }
 }

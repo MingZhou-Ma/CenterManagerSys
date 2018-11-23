@@ -48,25 +48,43 @@ public class EnterpriseController {
         return enterpriseService.addEnterprise(token, enterprise);
     }
 
-    @ApiOperation(value = "查询企业账单详情", notes = "查询企业账单详情")
-    @ApiImplicitParam(name = "jsonObject", value = "jsonObject对象：token（string）；id（int）", required = true)
-    @RequestMapping(value = "/api/enterprise/del", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
-    public ResJson delEnterprise(@RequestBody JSONObject jsonObject) {
-        return enterpriseService.delEnterprise(jsonObject);
+    @ApiOperation(value = "删除企业", notes = "删除企业")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "token", value = "token", required = true, dataType = "String"),
+            @ApiImplicitParam(name = "id", value = "企业id", required = true, dataType = "int")
+    })
+    @RequestMapping(value = "/api/enterprise/del", method = RequestMethod.POST)
+    public ResJson delEnterprise(@RequestParam String token, @RequestParam Integer id) {
+        return enterpriseService.delEnterprise(token, id);
     }
 
     @ApiOperation(value = "查询企业列表", notes = "查询企业列表")
-    @ApiImplicitParam(name = "jsonObject", value = "jsonObject对象：token(string);page(int);size(int)", required = true)
-    @RequestMapping(value = "/api/enterprise/list", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
-    public ResJson findEnterpriseList(@RequestBody JSONObject jsonObject) {
-        return enterpriseService.findEnterpriseList(jsonObject);
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "token", value = "token", required = true, dataType = "String"),
+            @ApiImplicitParam(name = "page", value = "页码", required = true, dataType = "int"),
+            @ApiImplicitParam(name = "size", value = "每页条数", required = true, dataType = "int"),
+    })
+    @RequestMapping(value = "/api/enterprise/list", method = RequestMethod.POST)
+    public ResJson findEnterpriseList(@RequestParam String token,
+                                      @RequestParam(name = "page", defaultValue = "0") Integer page,
+                                      @RequestParam(name = "size", defaultValue = "10") Integer size) {
+        return enterpriseService.findEnterpriseList(token, page, size);
     }
 
     @ApiOperation(value = "查询企业账单详情", notes = "查询企业账单详情")
-    @ApiImplicitParam(name = "jsonObject", value = "jsonObject对象：token（string）；page（int）；size（int）；id（int）", required = true)
-    @RequestMapping(value = "/api/enterprise/billFlow/list", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
-    public ResJson findBillFlowListByEnterprise(@RequestBody JSONObject jsonObject) {
-        return enterpriseService.findBillFlowListByEnterprise(jsonObject);
+    //@ApiImplicitParam(name = "jsonObject", value = "jsonObject对象：token（string）；page（int）；size（int）；id（int）", required = true)
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "token", value = "token", required = true, dataType = "String"),
+            @ApiImplicitParam(name = "page", value = "页码", required = true, dataType = "int"),
+            @ApiImplicitParam(name = "size", value = "每页条数", required = true, dataType = "int"),
+            @ApiImplicitParam(name = "id", value = "企业id", required = true, dataType = "int")
+    })
+    @RequestMapping(value = "/api/enterprise/billFlow/list", method = RequestMethod.POST)
+    public ResJson findBillFlowListByEnterprise(@RequestParam String token,
+                                                @RequestParam(name = "page", defaultValue = "0") Integer page,
+                                                @RequestParam(name = "size", defaultValue = "10") Integer size,
+                                                @RequestParam Integer id) {
+        return enterpriseService.findBillFlowListByEnterprise(token, page, size, id);
     }
 
     @ApiOperation(value = "更新新客户数", notes = "更新新客户数")

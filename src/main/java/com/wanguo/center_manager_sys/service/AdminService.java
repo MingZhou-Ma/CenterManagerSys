@@ -10,5 +10,6 @@ import com.wanguo.center_manager_sys.utils.ResJson;
  */
 public interface AdminService {
 
-    ResJson login(Admin admin);
+    //ResJson login(Admin admin);
+    ResJson login(String username, String password);
 }

@@ -32,8 +32,9 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public ResJson login(Admin admin) {
-        Admin a = adminJpa.findByUsernameAndPassword(admin.getUsername(), admin.getPassword());
+    public ResJson login(String username, String password) {
+        //Admin a = adminJpa.findByUsernameAndPassword(admin.getUsername(), admin.getPassword());
+        Admin a = adminJpa.findByUsernameAndPassword(username, password);
         if (null == a) {
             return ResJson.failJson(4000, "账号或密码错误", null);
         }

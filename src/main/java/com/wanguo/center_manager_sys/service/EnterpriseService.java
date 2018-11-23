@@ -13,11 +13,11 @@ public interface EnterpriseService {
 
     ResJson addEnterprise(String token, Enterprise enterprise);
 
-    ResJson delEnterprise(JSONObject jsonObject);
+    ResJson delEnterprise(String token, Integer id);
 
-    ResJson findEnterpriseList(JSONObject jsonObject);
+    ResJson findEnterpriseList(String token, Integer page, Integer size);
 
-    ResJson findBillFlowListByEnterprise(JSONObject jsonObject);
+    ResJson findBillFlowListByEnterprise(String token, Integer page, Integer size, Integer id);
 
     ResJson updateNumOfNewCustomer(JSONObject jsonObject);
 }
