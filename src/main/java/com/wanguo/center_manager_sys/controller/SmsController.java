@@ -30,7 +30,7 @@ public class SmsController {
 
     @ApiOperation(value = "短信", notes = "发送短信接口")
     @ApiImplicitParam(name = "jsonObject", value = "jsonObject对象", required = true)
-    @RequestMapping(value = "/api/sms/send", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/sms/send", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public ResJson sendSms(@RequestBody JSONObject jsonObject) {
         return smsService.groupSms(jsonObject);
     }
