@@ -20,6 +20,10 @@ spring:
     host: 120.78.153.10
     port: 6379
     password: badguy
-    #lettuce:
-      #shutdown-timeout: 100ms
-    timeout: 5000ms
+    lettuce:
+      #pool:
+        #max-active: 8
+        #max-idle: 8
+        #max-wait: -1ms
+        #min-idle: 0
+      shutdown-timeout: 100ms

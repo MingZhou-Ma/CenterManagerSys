@@ -1,24 +1,16 @@
 package com.wanguo.center_manager_sys.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wanguo.center_manager_sys.pojo.Admin;
-import com.wanguo.center_manager_sys.service.AdminService;
 import com.wanguo.center_manager_sys.service.SmsService;
-import com.wanguo.center_manager_sys.utils.GroupSmsUtil;
 import com.wanguo.center_manager_sys.utils.ResJson;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.Valid;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * 描述：
@@ -26,6 +18,7 @@ import javax.validation.Valid;
  * @author Badguy
  */
 @RestController
+@ApiIgnore
 public class SmsController {
 
     private final SmsService smsService;

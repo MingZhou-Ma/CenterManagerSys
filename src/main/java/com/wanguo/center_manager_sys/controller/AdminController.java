@@ -8,9 +8,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,14 +38,6 @@ public class AdminController {
     @ApiImplicitParam(name = "admin", value = "管理员实体admin", required = true, dataType = "Admin")
     @RequestMapping(value = "/api/admin/login", method = RequestMethod.POST)
     public ResJson login(@RequestBody @Valid Admin admin, BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            StringBuilder msg = new StringBuilder();
-//            for (FieldError fieldError : bindingResult.getFieldErrors()) {
-//                String errorMsg = messageSource.getMessage(fieldError, LocaleContextHolder.getLocale());
-//                msg.append(fieldError.getField()).append("：").append(errorMsg).append("；");
-//            }
-//            return ResJson.failJson(4000, msg.toString(), null);
-//        }
         ResJson resJson = ValidationUtil.validation(bindingResult, messageSource);
         if (!resJson.getCode().equals(1000)) {
             return resJson;

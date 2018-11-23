@@ -2,6 +2,7 @@ package com.wanguo.center_manager_sys.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.repository.support.RedisRepositoryFactoryBean;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -44,4 +45,9 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
 
     }
+
+//    @Bean
+//    public RedisRepositoryFactoryBean redisRepositoryFactoryBean() {
+//        return null;
+//    }
 }

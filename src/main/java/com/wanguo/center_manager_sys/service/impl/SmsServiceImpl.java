@@ -40,6 +40,7 @@ public class SmsServiceImpl implements SmsService {
             return ResJson.failJson(4000, "发送短信失败", null);
         }
         enterprise.setSmsFee(enterprise.getSmsFee() + numbers * 0.08);
+        //enterprise.setTotalFee(enterprise.getSmsFee() + enterprise.getNumOfNewCustomer() * 0.8);
         enterpriseJpa.save(enterprise);
         return ResJson.successJson("group sms success");
     }

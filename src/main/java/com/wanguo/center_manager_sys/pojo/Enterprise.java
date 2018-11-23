@@ -36,5 +36,4 @@ public class Enterprise {
     //@NotBlank(message = "新增客户数不能为空")
     private Long numOfNewCustomer;
 
-
 }

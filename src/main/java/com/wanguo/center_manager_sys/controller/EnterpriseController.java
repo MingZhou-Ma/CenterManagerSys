@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 
@@ -47,22 +48,31 @@ public class EnterpriseController {
         return enterpriseService.addEnterprise(token, enterprise);
     }
 
-    @ApiOperation(value = "查询企业", notes = "查询企业列表")
-//    @ApiImplicitParams(value = {
-//            @ApiImplicitParam(name = "token", value = "token", required = true, dataType = "String"),
-//            @ApiImplicitParam(name = "page", value = "起始页", required = true, dataType = "int"),
-//            @ApiImplicitParam(name = "size", value = "每页大小", required = true, dataType = "int")
-//    })
-    @ApiImplicitParam(name = "jsonObject", value = "jsonObject对象", required = true, dataType = "JSONObject")
+    @ApiOperation(value = "查询企业账单详情", notes = "查询企业账单详情")
+    @ApiImplicitParam(name = "jsonObject", value = "jsonObject对象：token（string）；id（int）", required = true)
+    @RequestMapping(value = "/api/enterprise/del", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public ResJson delEnterprise(@RequestBody JSONObject jsonObject) {
+        return enterpriseService.delEnterprise(jsonObject);
+    }
+
+    @ApiOperation(value = "查询企业列表", notes = "查询企业列表")
+    @ApiImplicitParam(name = "jsonObject", value = "jsonObject对象：token(string);page(int);size(int)", required = true)
     @RequestMapping(value = "/api/enterprise/list", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public ResJson findEnterpriseList(@RequestBody JSONObject jsonObject) {
-        //return enterpriseService.findEnterpriseList(token, page, size);
-        return null;
+        return enterpriseService.findEnterpriseList(jsonObject);
+    }
+
+    @ApiOperation(value = "查询企业账单详情", notes = "查询企业账单详情")
+    @ApiImplicitParam(name = "jsonObject", value = "jsonObject对象：token（string）；page（int）；size（int）；id（int）", required = true)
+    @RequestMapping(value = "/api/enterprise/billFlow/list", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public ResJson findBillFlowListByEnterprise(@RequestBody JSONObject jsonObject) {
+        return enterpriseService.findBillFlowListByEnterprise(jsonObject);
     }
 
     @ApiOperation(value = "更新新客户数", notes = "更新新客户数")
     @ApiImplicitParam(name = "jsonObject", value = "jsonObject对象", required = true)
-    @RequestMapping(value = "/api/enterprise/update", method = RequestMethod.POST)
+    @ApiIgnore
+    @RequestMapping(value = "/api/enterprise/numOfNewCustomer/update", method = RequestMethod.POST)
     public ResJson updateNumOfNewCustomer(@RequestBody JSONObject jsonObject) {
         return enterpriseService.updateNumOfNewCustomer(jsonObject);
     }

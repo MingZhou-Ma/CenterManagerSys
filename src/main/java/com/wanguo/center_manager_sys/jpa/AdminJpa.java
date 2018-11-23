@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
  *
  * @author Badguy
  */
-@Repository
 public interface AdminJpa extends JpaRepository<Admin, Integer>, JpaSpecificationExecutor<Admin> {
 
     Admin findByUsernameAndPassword(String username, String password);

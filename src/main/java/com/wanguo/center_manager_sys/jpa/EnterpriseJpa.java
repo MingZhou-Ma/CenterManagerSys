@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
  *
  * @author Badguy
  */
-@Repository
 public interface EnterpriseJpa extends JpaRepository<Enterprise, Integer>, JpaSpecificationExecutor<Enterprise> {
 
     Enterprise findByAppId(String appId);
