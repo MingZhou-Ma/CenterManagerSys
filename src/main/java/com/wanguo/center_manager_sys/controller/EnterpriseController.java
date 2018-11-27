@@ -94,4 +94,12 @@ public class EnterpriseController {
     public ResJson updateNumOfNewCustomer(@RequestBody JSONObject jsonObject) {
         return enterpriseService.updateNumOfNewCustomer(jsonObject);
     }
+
+    @ApiOperation(value = "获取企业", notes = "根据AppId获取企业信息")
+    @ApiImplicitParam(name = "jsonObject", value = "jsonObject对象", required = true)
+    @ApiIgnore
+    @RequestMapping(value = "/api/enterprise/getByAppId", method = RequestMethod.POST)
+    public ResJson getEnterpriseByAppId(@RequestBody JSONObject jsonObject) {
+        return enterpriseService.getEnterpriseByAppId(jsonObject);
+    }
 }

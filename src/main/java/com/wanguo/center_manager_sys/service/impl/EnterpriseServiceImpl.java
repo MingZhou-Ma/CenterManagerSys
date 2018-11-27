@@ -8,6 +8,7 @@ import com.wanguo.center_manager_sys.pojo.BillFlow;
 import com.wanguo.center_manager_sys.pojo.Enterprise;
 import com.wanguo.center_manager_sys.service.EnterpriseService;
 import com.wanguo.center_manager_sys.service.TokenService;
+import com.wanguo.center_manager_sys.utils.GroupSmsUtil;
 import com.wanguo.center_manager_sys.utils.ParamUtil;
 import com.wanguo.center_manager_sys.utils.ResJson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -140,6 +141,16 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         //enterprise.setTotalFee(enterprise.getSmsFee() + enterprise.getNumOfNewCustomer() * 0.8);
         enterpriseJpa.save(enterprise);
         return ResJson.successJson("success");
+    }
+
+    @Override
+    public ResJson getEnterpriseByAppId(JSONObject jsonObject) {
+        String appId = jsonObject.getString("appId");
+        Enterprise enterprise = enterpriseJpa.findByAppId(appId);
+        if (null == enterprise) {
+            return ResJson.failJson(4000, "企业不存在", null);
+        }
+        return ResJson.successJson("get enterprise success", enterprise);
     }
 
 }

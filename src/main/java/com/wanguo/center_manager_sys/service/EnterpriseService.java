@@ -20,4 +20,6 @@ public interface EnterpriseService {
     ResJson findBillFlowListByEnterprise(String token, Integer page, Integer size, Integer id);
 
     ResJson updateNumOfNewCustomer(JSONObject jsonObject);
+
+    ResJson getEnterpriseByAppId(JSONObject jsonObject);
 }
