@@ -16,7 +16,7 @@ spring:
     open-in-view: true
     show-sql: true
   redis:
-    database: 0
+    database: 15
     host: 120.78.153.10
     port: 6379
     password: badguy
