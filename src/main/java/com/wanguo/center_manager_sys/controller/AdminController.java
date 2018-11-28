@@ -36,10 +36,12 @@ public class AdminController {
     @ApiImplicitParam(name = "admin", value = "管理员实体admin", required = true, dataType = "Admin")*/
     @RequestMapping(value = "/api/admin/login", method = RequestMethod.POST)
     public ResJson login(@RequestParam String username, @RequestParam  String password) {
+    //public ResJson login(@RequestParam Admin admin) {
 //        ResJson resJson = ValidationUtil.validation(bindingResult, messageSource);
 //        if (!resJson.getCode().equals(1000)) {
 //            return resJson;
 //        }
         return adminService.login(username, password);
+        //return adminService.login(admin);
     }
 }

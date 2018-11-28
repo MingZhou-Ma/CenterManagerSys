@@ -1,20 +1,15 @@
 package com.wanguo.center_manager_sys.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wanguo.center_manager_sys.pojo.Enterprise;
 import com.wanguo.center_manager_sys.service.EnterpriseService;
 import com.wanguo.center_manager_sys.utils.ResJson;
-import com.wanguo.center_manager_sys.utils.ValidationUtil;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
-
-import javax.validation.Valid;
 
 /**
  * 描述：
@@ -34,18 +29,20 @@ public class EnterpriseController {
         this.messageSource = messageSource;
     }
 
-    @ApiOperation(value = "添加企业", notes = "添加企业")
-    @ApiImplicitParams(value = {
-            @ApiImplicitParam(name = "token", value = "token", required = true, dataType = "String"),
-            @ApiImplicitParam(name = "enterprise", value = "企业实体enterprise", required = true, dataType = "Enterprise")
-    })
+    //    @ApiOperation(value = "添加企业", notes = "添加企业")
+//    @ApiImplicitParams(value = {
+//            @ApiImplicitParam(name = "token", value = "token", required = true, dataType = "String"),
+//            @ApiImplicitParam(name = "enterprise", value = "企业实体enterprise", required = true, dataType = "Enterprise")
+//    })
     @RequestMapping(value = "/api/enterprise/add", method = RequestMethod.POST)
-    public ResJson addEnterprise(@RequestParam String token, @RequestBody @Valid Enterprise enterprise, BindingResult bindingResult) {
-        ResJson resJson = ValidationUtil.validation(bindingResult, messageSource);
+    //public ResJson addEnterprise(@RequestParam String token, @RequestBody @Valid Enterprise enterprise, BindingResult bindingResult) {
+    public ResJson addEnterprise(@RequestParam String token, @RequestParam String appId, @RequestParam String name) {
+        /*ResJson resJson = ValidationUtil.validation(bindingResult, messageSource);
         if (!resJson.getCode().equals(1000)) {
             return resJson;
         }
-        return enterpriseService.addEnterprise(token, enterprise);
+        return enterpriseService.addEnterprise(token, enterprise);*/
+        return enterpriseService.addEnterprise(token, appId, name);
     }
 
     @ApiOperation(value = "删除企业", notes = "删除企业")

@@ -38,7 +38,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         this.billFlowJpa = billFlowJpa;
     }
 
-    @Override
+    /*@Override
     public ResJson addEnterprise(String token, Enterprise enterprise) {
         String tokenString = tokenService.getToken(token);
         if (StringUtils.isEmpty(tokenString)) {
@@ -48,6 +48,25 @@ public class EnterpriseServiceImpl implements EnterpriseService {
             return ResJson.failJson(4000, "企业已存在", null);
         }
 
+        enterprise.setSmsFee(0D);
+        enterprise.setNumOfNewCustomer(0L);
+        enterpriseJpa.save(enterprise);
+        return ResJson.successJson("add enterprise success");
+    }*/
+
+    @Override
+    public ResJson addEnterprise(String token, String appId, String name) {
+        String tokenString = tokenService.getToken(token);
+        if (StringUtils.isEmpty(tokenString)) {
+            return ResJson.errorAccessToken();
+        }
+        if (null != enterpriseJpa.findByAppId(appId)) {
+            return ResJson.failJson(4000, "企业已存在", null);
+        }
+
+        Enterprise enterprise = new Enterprise();
+        enterprise.setAppId(appId);
+        enterprise.setName(name);
         enterprise.setSmsFee(0D);
         enterprise.setNumOfNewCustomer(0L);
         enterpriseJpa.save(enterprise);

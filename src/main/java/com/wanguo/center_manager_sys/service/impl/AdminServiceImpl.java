@@ -33,6 +33,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public ResJson login(String username, String password) {
+        //public ResJson login(Admin admin) {
         //Admin a = adminJpa.findByUsernameAndPassword(admin.getUsername(), admin.getPassword());
         Admin a = adminJpa.findByUsernameAndPassword(username, password);
         if (null == a) {

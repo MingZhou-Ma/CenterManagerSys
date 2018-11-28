@@ -11,7 +11,8 @@ import com.wanguo.center_manager_sys.utils.ResJson;
  */
 public interface EnterpriseService {
 
-    ResJson addEnterprise(String token, Enterprise enterprise);
+    //ResJson addEnterprise(String token, Enterprise enterprise);
+    ResJson addEnterprise(String token, String appId, String name);
 
     ResJson delEnterprise(String token, Integer id);
 
